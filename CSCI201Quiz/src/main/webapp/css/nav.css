@@ -1,0 +1,118 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	height: 100%;
+}
+
+
+.navbar-logo {
+	text-shadow: 2px 2px 4px #000000;
+	color: white;
+}
+
+.navbar {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #419be0;
+	/* background-image: linear-gradient(to right, #9E768F, #9FA4C4); */
+	color: black;
+	height: 65px;
+	padding: 1em;
+	font-weight: bolder;
+	font-size: 25px;
+}
+
+.navbar-menu li:hover {
+	color: white;
+	cursor: pointer;
+}
+
+.navbar-menu {
+	display: flex;
+	flex-direction: row;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.navbar-menu>li {
+	margin: 0 1rem;
+	overflow: hidden;
+}
+.navbar-menu>li a {
+	text-decoration: none;
+	color: white;
+	font-size: 18px;
+	font-weight: normal;
+}
+.navbar-menu>li a:hover {
+	
+	color: black;
+	
+}
+
+/*Container for menu button  */
+.menu-button-container {
+	display: none;
+	height: 100%;
+	width: 30px;
+	cursor: pointer;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#menu-toggle {
+	display: none;
+}
+
+/*  Creating the menu button */
+.menu-button,
+.menu-button::before,
+.menu-button::after {
+	display: block;
+	background-color: #fff;
+	position: absolute;
+	height: 6px;
+	width: 32px;
+	border-radius: 3px;
+}
+
+.menu-button::before {
+	content: '';
+	margin-top: -8px;
+}
+
+.menu-button::after {
+	content: '';
+	margin-top: 8px;
+}
+
+/*  Adding Functionality to the Hamburger Menu with CSS  */
+#menu-toggle:checked+.menu-button-container .menu-button::before {
+	margin-top: 0px;
+	transform: rotate(45deg);
+}
+
+#menu-toggle:checked+.menu-button-container .menu-button {
+	background: rgba(255, 255, 255, 0);
+}
+
+#menu-toggle:checked+.menu-button-container .menu-button::after {
+	margin-top: 0px;
+	/*  transforms the hamburger icon into a cross  */
+	transform: rotate(-45deg);
+}
+
+
+
+
+/* Making the navbar responsive by CSS Media Queries */
+@media (max-width: 700px) {
+	
+}

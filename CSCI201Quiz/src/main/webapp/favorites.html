@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>assignmentWeb4</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- <meta name="description" content="Wireless Devices and Systems Group"> -->
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.1/css/academicons.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" type="text/css" href="./css/stylesheet.css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+
+
+
+</head>
+
+<body>
+
+
+	<div id="myPopup">
+		<div class="popup-overlay-div">
+		
+		</div>
+		<div class="popup">
+			<div class="column">
+				<span class="popup-title row">
+					localhost:8080
+				</span>
+				
+				<span class="popup-text row">
+		
+				</span>
+				<br>
+			</div>
+			
+			<button class="popup-ok-button">OK</button>
+		</div>
+	</div>
+	
+	<nav class="navbar">
+
+		<div class="navbar-logo">
+			SalTickets
+		</div>
+
+		<!--  checkbox to control the icon's state    -->
+
+		<!--  main menu    -->
+		<ul class="navbar-menu">
+			<li><a href="index.html">Home</a></li>
+			<li id="favouritesNav-li"><a href="favorites.html">Favorites</a></li>
+			<li id="walletNav-li"><a href="wallet.html">Wallet</a></li>
+			<li id="logoutNav-li"><a class="logoutNav">Logout</a></li>
+			<li id="loginNav-li"><a href="login.html">Login/Sign Up</a></li>
+		</ul>
+	</nav>
+	<div id="nav-spacer">
+
+	</div>
+	
+	
+
+	<div class="page-name">
+		<h2>
+			My Favorites:
+		</h2>
+	</div>
+	<div class="container">
+		<div class="inner-container">
+			<!-- <div class="all-favorites column"> -->
+
+			<table class="all-favorites-table">
+
+				<!-- <tr>
+							<td>
+								<div class="event row one">
+									<div class="event-name column">
+										Login
+									</div>
+									<div class="delete-favorite column">
+										X
+									</div>
+								</div>
+								<div class="event row two">
+									<div class="event-date column">
+										Login
+									</div>
+									<div class="event-price column">
+										X
+									</div>
+								</div>
+								
+							</td>
+							
+						</tr> -->
+
+			</table>
+
+			<!-- </div> -->
+
+
+
+		</div>
+	</div>
+	
+	<div class="trade-events-div" data-eventid="" data-minprice="">
+		<div class="inner-container">
+			<div class="trade-details column" >
+				<div class="trade-details row one">
+					<div class="trade-details-name1 column">
+						<h1 class="trade-details-name">
+
+						</h1>
+					</div>
+					<div class="trade-details-name2 column">
+
+						<i class="fa fa-star" aria-hidden="true"></i>
+
+
+					</div>
+				</div>
+				<div class="trade-details row two">
+					<div class="trade-details1 column">
+						<div class="">
+							<span class="trade-details-header">
+								Date
+							</span><br>
+							<span class="trade-details-date">
+
+							</span>
+						</div>
+						<br>
+						<div class="">
+							<span class="trade-details-header">
+								Venue
+							</span><br>
+							<span class="trade-details-venue">
+
+							</span>
+						</div>
+						<br>
+						<div class="">
+							<span class="trade-details-header">
+								Price Range
+							</span><br>
+							<span class="trade-details-price-range">
+
+							</span>
+						</div>
+						<br>
+						<div class="">
+							<span class="trade-details-header">
+								More Info
+							</span><br>
+							<a class="trade-details-more-info" href="">
+
+							</a>
+
+						</div>
+					</div>
+					<div class="trade-details2 column">
+						<div class="">
+							<span class="trade-details-header">
+								Quantity of tickets to purchase:
+							</span>
+						</div>
+						<input type="number" id="trade-details-quantity" name="quantity">
+						
+						<button class="purchase-button">Purchase</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+	</div>
+	<div id="bottom-spacer">
+
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="./js/favorites.js"></script>
+</body>
+
+</html>
