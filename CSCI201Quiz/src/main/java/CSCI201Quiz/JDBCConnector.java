@@ -8,7 +8,11 @@ import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class JDBCConnector {
 	static final String DB_URL = "jdbc:mysql://localhost:3306/CSCI201Quiz";
@@ -111,30 +115,31 @@ public class JDBCConnector {
 			return -1;
 		}
 	}
-	public static List<Question> getQuizQuestionsAnswers(int quizId) {
-		List<Question> questionList = getQuizQuestions(quizId);
+	public static PriorityQueue<Question> getQuizQuestionsAnswers(int quizId) {
+		PriorityQueue<Question> questionList = getQuizQuestions(quizId);
 		String QUERY = "";
 		for(Question question : questionList) {
 			QUERY = "SELECT * FROM Answer a "
-					+" WHERE question_id=" + question.getId() +";";
+					+" WHERE question_id=" + question.getId() +" ;";
 			ResultSet rs = executeToDatabase(QUERY, "GET");
 			
-			List<Answer> answerList = new ArrayList<>();
+			LinkedList<Answer> answerQueue = new LinkedList<>();
+//			List<Answer> answerList = new ArrayList<>();
 			try {
 				while(rs.next()) {
 					Answer answer = new Answer(rs.getInt("question_id"), rs.getString("answer_description"), rs.getInt("answer_value"));
 					System.out.println(answer.toString());
-					answerList.add(answer);
+					answerQueue.add(answer);
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			if(answerList.size() != 4) {
-				System.err.println("Error: getQuizQuestionsAnswers(). Question doesn't have 4 answers");
+			if(answerQueue.size() != 4) {
+				System.err.println("Error: getQuizQuestionsAnswers(). Question doesn't have exactly 4 answers");
 				return null;
 			}
-			question.setAnswerList(answerList);
+			question.setAnswerList(answerQueue);
 		}
 		
 		
@@ -145,7 +150,7 @@ public class JDBCConnector {
 		
 		
 	}
-	public static List<Question> getQuizQuestions(int quizId) {
+	public static PriorityQueue<Question> getQuizQuestions(int quizId) {
 		String QUERY = "SELECT * FROM Question q "
 				+" WHERE quiz_id=" + quizId +
 				" ORDER BY question_no ASC"+";";
@@ -156,7 +161,22 @@ public class JDBCConnector {
 		}
 		else {
 			try {
-				List<Question> questionList = new ArrayList<>();
+				int maxQuestions = 20;//max number of Questions should be 10 anyway
+//				PriorityQueue<Question> questionList = new PriorityQueue<Question>(maxQuestions,Comparator.comparing(Question.getQuestion_no()));
+
+				PriorityQueue<Question> questionList = new PriorityQueue<>(maxQuestions,new Comparator<Question>() {
+				    public int compare(Question q1, Question q2) {
+				        // compare n1 and n2
+				    	if(q1.getQuestion_no()>q2.getQuestion_no()) {
+				    		return 1;
+				    	}
+				    		  
+				    	else if(q1.getQuestion_no()<q2.getQuestion_no()) {
+				    		return-1;
+				    	}
+				    	return 0;  
+				    }});
+
 				while (rs.next()) {
 					Question question = new Question(rs.getInt("id"), rs.getInt("quiz_id"), rs.getInt("question_no"), rs.getString("description"), rs.getString("image_location"));
 					System.out.println(question.toString());
@@ -269,106 +289,106 @@ public class JDBCConnector {
 	
 	
 	
-	public static User loginUser(String username, String password) {
-		String QUERY = "SELECT * FROM User u"
-				+ " WHERE u.username='" + username + "' AND u.password='" + password + "';";
-//		QUERY += "VALUES('" + username + "','" + password + ");";
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-		} catch (ClassNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-
-		try{
-
-			ResultSet rs = executeToDatabase(QUERY, "GET");
-			
-			
-			if (rs.next()) {
-			    String foundUsername = rs.getString("username");
-//			    System.out.println("Found username -" + foundUsername); // display inserted record
-			    User user = new User(rs.getInt("id"), rs.getString("username"), rs.getString("password"), rs.getString("email"), rs.getInt("balance"));
-			    System.out.println(user.toString()); // display inserted record
-			    
-			    if(rs.next()) {
-			    	System.out.println("Error: Multiple usernames -" + foundUsername); // display inserted record
-			    	return null;
-			    }
-			    
-			    return(user);
-			}
-			else {
-				return (null);
-			}
-			
-		}
-		catch (SQLIntegrityConstraintViolationException  e) {
-			// TODO: handle exception
-			e.printStackTrace();
-//			System.out.println (e.getMessage());
-			
-//			return (e.getMessage());
-			return null;
-		}
-		catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-//			return (e.getMessage());
-			return null;
-		}
-		
-	}
-	public static User registerUser(User user) {
-		String QUERY = "INSERT INTO User(username, password, email, balance)";
-		QUERY += "VALUES('" + user.getUsername() + "','" + user.getPassword() + "','" + user.getEmail() + "'," + user.getBalance() + ");";
-		
-        try {
-			Class.forName("com.mysql.jdbc.Driver");
-		} catch (ClassNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-
-		try{
-			Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
-			Statement stmt = conn.createStatement();
-			stmt.executeUpdate(QUERY, Statement.RETURN_GENERATED_KEYS);
-			ResultSet rs = stmt.getGeneratedKeys();
-
-			if (rs.next()) {
-			    user.setId((int)rs.getLong(1)); 
-//			    System.out.println("Inserted ID -" + id); // display inserted record
-			    return user;
-			}
-			
-			user.setId(0);
-			return (user);
-			
-		}
-		catch (SQLIntegrityConstraintViolationException  e) {
-			// TODO: handle exception
-			e.printStackTrace();
-//			System.out.println (e.getMessage());
-			if(e.getMessage().contains("user.email")) {
-				user.setId(-1);
-				return (user);
-			}
-			else if(e.getMessage().contains("user.username")) {
-				user.setId(-2);
-				return (user);
-			}
-			
-			user.setId(0);
-			return (user);
-		}
-		catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			user.setId(0);
-			return (user);
-		}
-		
-//				return 1;
-	}
+//	public static User loginUser(String username, String password) {
+//		String QUERY = "SELECT * FROM User u"
+//				+ " WHERE u.username='" + username + "' AND u.password='" + password + "';";
+////		QUERY += "VALUES('" + username + "','" + password + ");";
+//		try {
+//			Class.forName("com.mysql.jdbc.Driver");
+//		} catch (ClassNotFoundException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
+//
+//		try{
+//
+//			ResultSet rs = executeToDatabase(QUERY, "GET");
+//			
+//			
+//			if (rs.next()) {
+//			    String foundUsername = rs.getString("username");
+////			    System.out.println("Found username -" + foundUsername); // display inserted record
+//			    User user = new User(rs.getInt("id"), rs.getString("username"), rs.getString("password"), rs.getString("email"), rs.getInt("balance"));
+//			    System.out.println(user.toString()); // display inserted record
+//			    
+//			    if(rs.next()) {
+//			    	System.out.println("Error: Multiple usernames -" + foundUsername); // display inserted record
+//			    	return null;
+//			    }
+//			    
+//			    return(user);
+//			}
+//			else {
+//				return (null);
+//			}
+//			
+//		}
+//		catch (SQLIntegrityConstraintViolationException  e) {
+//			// TODO: handle exception
+//			e.printStackTrace();
+////			System.out.println (e.getMessage());
+//			
+////			return (e.getMessage());
+//			return null;
+//		}
+//		catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+////			return (e.getMessage());
+//			return null;
+//		}
+//		
+//	}
+//	public static User registerUser(User user) {
+//		String QUERY = "INSERT INTO User(username, password, email, balance)";
+//		QUERY += "VALUES('" + user.getUsername() + "','" + user.getPassword() + "','" + user.getEmail() + "'," + user.getBalance() + ");";
+//		
+//        try {
+//			Class.forName("com.mysql.jdbc.Driver");
+//		} catch (ClassNotFoundException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
+//
+//		try{
+//			Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+//			Statement stmt = conn.createStatement();
+//			stmt.executeUpdate(QUERY, Statement.RETURN_GENERATED_KEYS);
+//			ResultSet rs = stmt.getGeneratedKeys();
+//
+//			if (rs.next()) {
+//			    user.setId((int)rs.getLong(1)); 
+////			    System.out.println("Inserted ID -" + id); // display inserted record
+//			    return user;
+//			}
+//			
+//			user.setId(0);
+//			return (user);
+//			
+//		}
+//		catch (SQLIntegrityConstraintViolationException  e) {
+//			// TODO: handle exception
+//			e.printStackTrace();
+////			System.out.println (e.getMessage());
+//			if(e.getMessage().contains("user.email")) {
+//				user.setId(-1);
+//				return (user);
+//			}
+//			else if(e.getMessage().contains("user.username")) {
+//				user.setId(-2);
+//				return (user);
+//			}
+//			
+//			user.setId(0);
+//			return (user);
+//		}
+//		catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//			user.setId(0);
+//			return (user);
+//		}
+//		
+////				return 1;
+//	}
 }

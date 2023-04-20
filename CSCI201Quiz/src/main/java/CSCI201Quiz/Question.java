@@ -1,6 +1,8 @@
 package CSCI201Quiz;
 
+import java.util.LinkedList;
 import java.util.List;
+import java.util.PriorityQueue;
 
 public class Question {
 	private int id = -1;
@@ -8,7 +10,7 @@ public class Question {
 	private int question_no;
 	private String description;
 	private String image_location;
-	private List<Answer> answerList;
+	private LinkedList<Answer> answerList;
 	
 	
 	public Question(int quiz_id, int question_no, String description, String image_location) {
@@ -24,9 +26,9 @@ public class Question {
 
 	
 	public Question(int id, int quiz_id, int question_no, String description, String image_location,
-			List<Answer> answerList) {
+			LinkedList<Answer> answerList) {
 		this(quiz_id, question_no, description, image_location);
-		this.answerList = answerList;
+		this.answerList= answerList;
 	}
 	public int getId() {
 		return id;
@@ -65,11 +67,21 @@ public class Question {
 	public void setImage_location(String image_location) {
 		this.image_location = image_location;
 	}
-	
-	public List<Answer> getAnswerList() {
+//	public PriorityQueue<Answer> getAnswerQueue() {
+//		return answerQueue;
+//	}
+//	public void setAnswerQueue(PriorityQueue<Answer> answerQueue) {
+//		this.answerQueue = answerQueue;
+//	}
+//	@Override
+//	public String toString() {
+//		return "Question [id=" + id + ", quiz_id=" + quiz_id + ", question_no=" + question_no + ", description="
+//				+ description + ", image_location=" + image_location + ", answerQueue=" + answerQueue + "]";
+//	}
+	public LinkedList<Answer> getAnswerList() {
 		return answerList;
 	}
-	public void setAnswerList(List<Answer> answerList) {
+	public void setAnswerList(LinkedList<Answer> answerList) {
 		this.answerList = answerList;
 	}
 	@Override
@@ -77,6 +89,8 @@ public class Question {
 		return "Question [id=" + id + ", quiz_id=" + quiz_id + ", question_no=" + question_no + ", description="
 				+ description + ", image_location=" + image_location + ", answerList=" + answerList + "]";
 	}
+	
+	
 	
 
 	
