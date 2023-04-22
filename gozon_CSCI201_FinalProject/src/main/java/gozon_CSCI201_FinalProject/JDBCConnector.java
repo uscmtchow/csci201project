@@ -229,6 +229,10 @@ public class JDBCConnector {
 	public static Vector<Record> getRecords(String username) {
 		Vector<Record> v = new Vector<Record>();//creating vector  
 		
+		if(username == "") {
+			return null;
+		}
+		
 		// retrieve the user_id when given the user name
 		Map<String, Integer> m = getUserIdFromUsername(username);
 		
@@ -245,8 +249,8 @@ public class JDBCConnector {
 			
 			while (rs.next()) {
 				try {
-					v.add(new Record(rs.getInt("id"), id, rs.getInt("quiz_id"), rs.getString("description")));
-					System.out.println(v.get(0).toString());
+					v.add(new Record(rs.getInt("id"), id, rs.getInt("quiz_id"), rs.getString("description"), rs.getString("image_location")));
+					//System.out.println(v.get(0).toString());
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
