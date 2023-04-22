@@ -127,7 +127,7 @@ public class JDBCConnector {
 //			List<Answer> answerList = new ArrayList<>();
 			try {
 				while(rs.next()) {
-					Answer answer = new Answer(rs.getInt("question_id"), rs.getString("answer_description"), rs.getInt("answer_value"));
+					Answer answer = new Answer(rs.getInt("question_id"), rs.getString("description"), rs.getInt("answer_value"));
 					System.out.println(answer.toString());
 					answerQueue.add(answer);
 				}
@@ -283,7 +283,35 @@ public class JDBCConnector {
 		}
 	}
 	
-	
+	public static User loginUser(String username, String password) {
+		String QUERY = "SELECT * FROM User u"
+				+ " WHERE u.username='" + username + "' AND u.password='" + password + "';";
+		
+
+		try{
+
+			ResultSet rs = executeToDatabase(QUERY, "GET");
+			System.out.println("hello");
+			if (rs.next()) {
+				
+			    User user = new User(rs.getInt("user_id"), rs.getString("username"), rs.getString("password"), rs.getString("email"));
+			    //System.out.println(user.toString()); // display inserted record  
+			    return(user);
+			}
+			else {
+				return (null);
+			}
+			
+		}
+		catch (SQLIntegrityConstraintViolationException  e) {
+			e.printStackTrace();
+			return null;
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}	
+	}
 	
 	
 	
