@@ -152,7 +152,9 @@ public class JDBCConnector {
 			    		(int)rs.getInt("lower_bound"), (int)rs.getInt("upper_bound"), (int)rs.getInt("quiz_id"), 
 			    		(int)rs.getInt("id")); 
 			    //System.out.println(user.toString()); // display inserted record  
-			    updateRecords(username, quiz_id, rs.getInt("id"));
+			    if(username != "") {
+			    	updateRecords(username, quiz_id, rs.getInt("id"));
+			    }
 			    
 			    return(r);
 			}
