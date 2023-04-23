@@ -3,6 +3,7 @@ package CSCI201Quiz;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.PriorityQueue;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,7 +34,7 @@ public class QuestionServlet extends HttpServlet{
 ////			categoryUsed = true;
 //		}
 		
-		List<Question> questionList = JDBCConnector.getQuizQuestionsAnswers(quizId);
+		PriorityQueue<Question> questionList = JDBCConnector.getQuizQuestionsAnswers(quizId);
 //		List<Quiz> quizList = JDBCConnector.getQuizzesByCategory(category);
 		if(questionList == null || questionList.size() <= 0) {
 			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
