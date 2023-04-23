@@ -432,3 +432,18 @@ INSERT INTO `trivially_trojan`.`Result` (id, quiz_id, description, lower_bound, 
 (14, 4, 'Casual Fan: You know a fair bit about the magical world of Harry Potter. Keep exploring and learning!', 3, 5, 'https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2021-11/211116-harry-potter-al-1232-b41548.jpg'),
 (15, 4, 'Wizard-in-Training: Impressive! Your knowledge of the Harry Potter universe is vast. Keep practicing your spells!', 6, 8, 'https://www.usmagazine.com/wp-content/uploads/2018/08/harry-potter-inspired-cocktails.jpg?crop=182px%2C94px%2C1539px%2C869px&resize=1600%2C900&quality=86&strip=all'),
 (16, 4, 'True Potterhead: Congratulations! Your knowledge of the Harry Potter world is truly magical. Dumbledore would be proud!', 9, 10, 'https://i.insider.com/5dc2fb9479d75707a81210d5?width=1136&format=jpeg');
+
+
+
+-- 
+-- Add Demo User
+-- 
+INSERT  INTO `trivially_trojan`.`User` (`id`,`email`,`password`,`username`) VALUES
+(1, "ttrojan@usc.edu", "fighton", "ttrojan");
+
+-- 
+-- Add example User Quiz Record
+-- 
+INSERT  INTO `trivially_trojan`.`UserQuizRecord`  (`id`,`user_id`,`quiz_id`,`quiz_result_id`) VALUES
+(1, 1, 1, 4),
+(2, 1, 3, 7);
