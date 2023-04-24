@@ -1,35 +1,20 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-	<title>assignmentWeb4</title>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>USC Quiz Login Page</title>
+	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- <meta name="description" content="Wireless Devices and Systems Group"> -->
-
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.1/css/academicons.css" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-	<link rel="stylesheet" type="text/css" href="./css/stylesheet.css">
-	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-
-
-
+	<link rel="stylesheet" type="text/css" href="theextra/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="theextra/css-hamburgers/hamburgers.min.css">
+	<link rel="stylesheet" type="text/css" href="css/login.css">
+	<link rel="stylesheet" type="text/css" href="css/second.css">
 </head>
-
 <body>
-
-
-
-
 	<nav class="navbar">
 
 		<div class="navbar-logo">
-			SalTickets
+			Trivially Trojan
 		</div>
 
 		<!--  checkbox to control the icon's state    -->
@@ -37,64 +22,68 @@
 		<!--  main menu    -->
 		<ul class="navbar-menu">
 			<li><a href="index.html">Home</a></li>
-			<li id="favouritesNav-li"><a href="favorites.html">Favorites</a></li>
-			<li id="walletNav-li"><a href="wallet.html">Wallet</a></li>
+			<!-- <li id="favouritesNav-li"><a href="favorites.html">Favorites</a></li> -->
+			<li id="pastQuiz-li"><a href="pastquiz.html">Past Quizzes</a></li>
 			<li id="logoutNav-li"><a class="logoutNav">Logout</a></li>
 			<li id="loginNav-li"><a href="login.html">Login/Sign Up</a></li>
 		</ul>
 	</nav>
-	<div id="nav-spacer">
 
-	</div>
-	<div class="container">
-		<div class="inner-container">
-			<div class="row">
-				<div class="login column">
-					<h3>
-						Login
-					</h3>
-					<span>
-						Username
-					</span>
-					<input type="text" id="login-input-username">
-					<span>
-						Password
-					</span>
-					<input type="password" id="login-input-password">
-					<button class="login-button">
-						Submit Query
-					</button>
+	<div class="overall">
+		<div class="container-login">
+			<div class="wrap-login">
+				<div class="pic1 js-tilt" data-tilt>
+					<img src="images/uscquiz.png" alt="IMG">
 				</div>
-				<div class="signup column">
-					<h3>
-						Sign Up
-					</h3>
-					<span>
-						Email
-					</span>
-					<input type="text" id="signup-input-email">
-					<span>
-						Username
-					</span>
-					<input type="text" id="signup-input-username">
-					<span>
-						Password
-					</span>
-					<input type="password" id="signup-input-password">
-					<span>
-						Confirm Password
-					</span>
-					<input type="password" id="signup-input-confirm-password">
-					<button class="signup-button">
-						Submit Query
-					</button>
-				</div>
+				<form class="login-form validate-form">
+					<span class="login-form-title"> Login: </span>
+					<div class="wrap-input validate-input" data-validate = "Email Required!: name@usc.edu">
+						<input class="input" type="text" name="email" placeholder="Email">
+						<span class="focus-input"></span>
+						<span class="symbol-input">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input validate-input" data-validate = "Need a Password!">
+						<input class="input" type="password" name="pass" placeholder="Password">
+						<span class="focus-input"></span>
+						<span class="symbol-input">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+					
+					<div class="container-login-form-btn">
+						<button class="login-form-btn"> Login</button>
+					</div>
+
+					<!-- <div class="text-center p-t-12">
+						<span class="first"> Forgot your </span>
+						<a class="second" href="#"> Username / Password? </a>
+					</div> -->
+
+					<div class="text-center p-t-10">
+						<a class="txt2" href="#">
+							Create Account
+							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+						</a>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="./js/login.js"></script>
-</body>
+	
+	
+	<script src="theextra/jquery/jquery-3.2.1.min.js"></script>
+	<script src="theextra/bootstrap/js/popper.js"></script>
+	<script src="theextra/bootstrap/js/bootstrap.min.js"></script>
+	<script src="theextra/tilt/tilt.jquery.min.js"></script>
+	<script>
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+	<script src="js/login.js"></script>
 
+</body>
 </html>

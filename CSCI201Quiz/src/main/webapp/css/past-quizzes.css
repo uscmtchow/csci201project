@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+.results-container {
+	position: relative;
+	margin-top: 5em;
+	left: 15%;
+	width: 70%;
+}
+
+table td {
+	padding: 1em;
+}
+
+table td span {
+	position: relative;
+	display: block;
+	font-size: 1.6em;
+}
+
+img.result-image {
+    width: 20em;
+}

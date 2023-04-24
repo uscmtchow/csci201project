@@ -12,17 +12,24 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-@WebServlet("/login")
-public class LoginServlet extends HttpServlet {
-	//private static final long serialVersionUID = 1L;
+@WebServlet("/newserv")
+public class NewServ extends HttpServlet {
+	private static final long serialVersionUID = 1L;
        
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public NewServ() {
+        super();
+    }
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 response.setContentType("application/json");  
 		 PrintWriter out = response.getWriter();  
-		 //System.out.println("post request");
+		 System.out.println("post request");
 		 Gson gson = new Gson();
 		 
 		 User user = gson.fromJson(request.getReader(), User.class);
@@ -31,7 +38,7 @@ public class LoginServlet extends HttpServlet {
 				user.getPassword() == null || user.getPassword().isBlank()) {
 				response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 				
-				out.write(gson.toJson("User info missing"));
+				out.write(gson.toJson("User shma missing"));
 				out.flush();
 			}
 			
