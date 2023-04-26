@@ -19,7 +19,7 @@ $(document).ready(function() {
 	async function getResults() {
 
 		// Load quiz results
-		let results = await fetch(`/CSCI201Quiz/userhistory?username=ttrojan`, {
+		let results = await fetch(`/CSCI201Quiz/userhistory?username=${getCookie("username")}`, {
 			method: "GET"
 		}).then((response) => {
 			try {
