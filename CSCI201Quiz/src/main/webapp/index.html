@@ -2,52 +2,28 @@
 <html>
 
 <head>
-	<title>assignmentWeb4</title>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Quiz Selection</title>
+	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- <meta name="description" content="Wireless Devices and Systems Group"> -->
-
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.1/css/academicons.css" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
-	<link rel="stylesheet" type="text/css" href="./css/stylesheet.css">
+	<link rel="stylesheet" type="text/css" href="./css/index.css">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="./js/index.js"></script>
-
 </head>
 
 <body>
-	<div id="myPopup">
-		<div class="popup-overlay-div">
-
-		</div>
-		<div class="popup">
-			<div class="column">
-				<span class="popup-title row">
-					localhost:8081
-				</span>
-
-				<span class="popup-text row">
-
-				</span>
-				<br>
-			</div>
-
-			<button class="popup-ok-button">OK</button>
-		</div>
-	</div>
 	<nav class="navbar">
 
 		<div class="navbar-logo">
-			CSCI201Quiz
+			Trivially Trojan
 		</div>
 
 		<!--  checkbox to control the icon's state    -->
@@ -55,208 +31,88 @@
 		<!--  main menu    -->
 		<ul class="navbar-menu">
 			<li><a href="index.html">Home</a></li>
-			<li id="favouritesNav-li"><a href="favorites.html">Favorites</a></li>
-			<li id="walletNav-li"><a href="wallet.html">Wallet</a></li>
+			<!-- <li id="favouritesNav-li"><a href="favorites.html">Favorites</a></li> -->
+			<li id="pastQuiz-li"><a href="pastquiz.html">Past Quizzes</a></li>
 			<li id="logoutNav-li"><a class="logoutNav">Logout</a></li>
 			<li id="loginNav-li"><a href="login.html">Login/Sign Up</a></li>
 		</ul>
 	</nav>
+	<!-- <h1>Select a Quiz</h1> -->
 
-	<div id="nav-spacer">
-
-	</div>
-	<div class="database-table container">
-		<div class="database-table inner-container">
-			<div class="database-table column">
-				<div class="database-table row">
-					<span>
-						getAllCategories(): localhost:8081/CSCI201Quiz/category
-					</span>
-					<br>
-					<div class="category-table">
-						<table class="category-data database-table">
-
-						</table>
-					</div>
-				</div>
-				<div class="database-table row">
-					<span>
-						getAllQuizzes(): localhost:8081/CSCI201Quiz/quiz
-					</span>
-					<br>
-					<div class="quiz-table">
-						<table class="quiz-data database-table">
-
-						</table>
-					</div>
-				</div>
-				<div class="database-table row">
-					<span>
-						getQuizzesByCategory(): localhost:8081/CSCI201Quiz/quiz?category=Sports
-					</span>
-					<br>
-					<div class="quiz-table">
-						<table class="quiz-by-category database-table">
-
-						</table>
-					</div>
-				</div>
-				<div class="database-table row">
-					<span>
-						getQuizQuestionsAnswers(): localhost:8081/CSCI201Quiz/question?quizId=1
-					</span>
-					<br>
-					<div class="questions-table">
-						<table class="quiz-questions database-table">
-
-						</table>
-					</div>
-				</div>
-				<div class="database-table row">
-					<span>
-						getQuizQuestionsAnswers(), 
-					</span>
-					<span style="color: red; font-size: 20px;">
-						 split table above to answer table: 
-					</span>
-					<span>
-						 localhost:8081/CSCI201Quiz/question?quizId=1
-					</span>
-					<br>
-					<div class="questions-table">
-						<table class="question-answers database-table">
-
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- <div class="search-box">
+	<div class="search-box">
 		<div class="search-box-header">
-			<h1>Events Search</h1>
+			<h1>Quiz Search</h1>
 		</div>
 		<div class="search-box-filter">
-			
+
 			<span class="search-box-filter-header">
-				Keyword
-				<span class="red-required-field-star">
+				Select a Category:
+				<!-- <span class="red-required-field-star">
 					*
-				</span>
+				</span> -->
 			</span>
-			
-			<input type="text" id="keyword-filter">
-			<span class="search-box-filter-header">
-				Location
-				<span class="red-required-field-star">
-					*
-				</span>
-			</span>
-			
-			<input type="text" id="location-filter">
+
+			<!-- <input type="select" id="keyword-filter"> -->
+			<select name="category-select">
+				<option value="0">Select category:</option>
+				<!-- <option value="1">Audi</option> -->
+				
+			</select>
+
 		</div>
 		<div class="search-button-div">
 			<button class="search-button">Search</button>
 		</div>
-		
-        
-	</div> -->
-	<div class="events-table-div">
-		<table id="events-table">
+
+
+	</div>
+	<div class="quiz-table-div">
+		<table id="quiz-table">
 			<tr>
 				<!-- <th onclick="sortTable(0)">No.</th>
 				<th onclick="sortTable(1)">Filename</th>
 				<th onclick="sortTable(2)">Last Modified</th>
 				<th onclick="sortTable(3)">Created</th> -->
 
-				<th class="date-col">Date</th>
-				<th class="icon-col">Icon</th>
-				<th class="event-col">Event</th>
-				<th class="venue-col">Venue</th>
+				<th class="name-col">Name</th>
+				<th class="image-col">Image</th>
+				<th class="description-col">Description</th>
+				<th class="category-col">Category</th>
 			</tr>
 		</table>
 	</div>
 
-	<div class="trade-events-div" data-eventid="" data-minprice="">
+
+	<div class="container">
 		<div class="inner-container">
-			<div class="trade-details column" style="box-sizing: border-box;">
-				<div class="trade-details row one">
-					<div class="trade-details-name1 column">
-						<span class="trade-details-id">
-
-						</span>
-					</div>
-					<div class="trade-details-name1 column">
-						<h1 class="trade-details-name">
-
-						</h1>
-					</div>
-					<div class="trade-details-name2 column">
-
-						<i class="fa fa-star" aria-hidden="true"></i>
-
+			<div class="quiz-list column">
+				<!-- <div class="quiz-list row">
+					<div class="column quiz-image">
 
 					</div>
-				</div>
-				<div class="trade-details row two">
-					<div class="trade-details1 column">
-						<div class="">
-							<span class="trade-details-header">
-								Date
-							</span><br>
-							<span class="trade-details-date">
-
-							</span>
+					<div class="column quiz-info">
+						<div class="row quiz-name">
+							
 						</div>
-						<br>
-						<div class="">
-							<span class="trade-details-header">
-								Venue
-							</span><br>
-							<span class="trade-details-venue">
+						<div class="row quiz-category">
 
-							</span>
 						</div>
-						<br>
-						<div class="">
-							<span class="trade-details-header">
-								Price Range
-							</span><br>
-							<span class="trade-details-price-range">
-
-							</span>
-						</div>
-						<br>
-						<div class="">
-							<span class="trade-details-header">
-								More Info
-							</span><br>
-							<a class="trade-details-more-info" href="">
-
-							</a>
+						<div class="row quiz-description">
 
 						</div>
 					</div>
-					<div class="trade-details2 column">
-						<div class="">
-							<span class="trade-details-header">
-								Quantity of tickets to purchase:
-							</span>
-						</div>
-						<input type="number" id="trade-details-quantity" name="quantity">
-						<button class="purchase-button">Purchase</button>
-					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
-
-
-
 	</div>
-	<div id="bottom-spacer">
 
-	</div>
+
+	<script>
+		function startQuiz(quizName) {
+			// redirect to quiz page with selected quiz name as URL parameter
+			window.location.href = 'quiz.html?name=' + quizName;
+		}
+	</script>
 </body>
 
 </html>

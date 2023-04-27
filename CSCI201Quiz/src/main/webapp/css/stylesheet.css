@@ -153,11 +153,12 @@ a:hover {
 } */
 
 .navbar-logo {
+  padding-left: 10px;
 	text-shadow: 2px 2px 4px #000000;
 	color: white;
 	text-align: left;
 	align-items: flex-start;
-	flex: 70%;
+	flex: 30%;
 }
 
 .navbar {
@@ -165,9 +166,9 @@ a:hover {
 	flex-direction: row;
 	align-items: center;
 	/* justify-content: space-between; */
-	background-color: #419be0;
+	background-color: #990000;
 	/* background-image: linear-gradient(to right, #9E768F, #9FA4C4); */
-	color: black;
+	color: #FFC72C;
 	height: 65px;
 	/* padding: 1em; */
 	font-weight: bolder;
@@ -204,10 +205,9 @@ a:hover {
 
 .navbar-menu>li a:hover {
 
-	color: black;
+	color: #FFC72C;
 
 }
-
 /*Container for menu button  */
 .menu-button-container {
 	display: none;

@@ -1,0 +1,78 @@
+@charset "UTF-8";
+
+.quiz-container {
+	padding-bottom: 5em;
+}
+
+.quiz-container table {
+	position: relative;
+	left: 5%;
+	width: 90%;
+}
+
+.quiz-container table td {
+	padding: 2em;
+}
+
+.quiz-container table th:first-child {
+	width: 40%;
+}
+
+.quiz-container .button-wrapper {
+	position: relative;
+	left: 5%;
+	width: 90%; text-align : center;
+	margin-top: 3em;
+	text-align: center;
+}
+
+.quiz-container .button-wrapper button {
+	position: relative;
+	width: 96%;
+	padding: 2%;
+	padding-bottom: 3em; font-size : 1.4em;
+	display: block;
+	font-size: 1.4em;
+}
+
+modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 3;
+    height: 100vh;
+    background-color: black;
+    opacity: 0.7;
+}
+
+.modal-window {
+    position: fixed;
+    margin-top: 10em;
+    padding: 2%;
+    width: 56%;
+    left: 20%;
+    z-index: 4;
+    background: white;
+}
+
+.modal-window h1 {
+	position: relative;
+    margin: 0;
+    margin-bottom: 1em;
+    font-size: 2.1em;
+    font-weight: bold;
+    display: block;
+}
+
+.modal-window img {
+	position: relative;
+	height: 15em;
+	margin-bottom: 2em
+}
+
+.modal-window .desc {
+	position: relative;
+	display: block;
+    font-size: 1.4em;
+}

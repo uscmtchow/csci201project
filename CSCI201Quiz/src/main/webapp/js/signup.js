@@ -38,19 +38,19 @@
 
 $(document).ready(function () {
 
+    // registerNewuser();
     updateNavByLoginStatus();
-
-    let loginButton = document.getElementsByClassName("login-form-btn")[0];
-    loginButton.addEventListener('click', function (){
-        logIn();
+    
+    let registerButton = document.getElementsByClassName("signup-form-btn")[0];
+    registerButton.addEventListener('click', function (){
+        registerNewuser();
     });
-
+    
     const logoutButton = document.getElementById("logoutNav-li");
     // console.log(logoutButton);
     logoutButton.addEventListener('click', function (){
         logOut();
     });
-
 
 
     function getCookie(cname) {
@@ -104,31 +104,32 @@ $(document).ready(function () {
     }
 
 
-    function logIn() {
+    function registerNewuser() {
         let username = document.getElementById("username-input").value;
-        // let email = document.getElementById("email-input").value;
+        let email = document.getElementById("email-input").value;
         let password = document.getElementById("password-input").value;
-        // let confirmPassword = document.getElementById("confirm-password-input").value;
+        let confirmPassword = document.getElementById("confirm-password-input").value;
 
         // alert(username + "/" + email + "/" + password + "/" );
         // return;
-        if(username == "" || password == "" ){
+        if(username == "" || email == "" || password == "" || confirmPassword == ""){
             alert("Please fill in all required fields.");
             return;
         }
-        // if(password != confirmPassword){
-        //     alert("Passwords entered do not match");
-        //     return;
-        // }
-        // if(!email.includes('@')){
-        //     alert("Please enter a valid email");
-        //     return;
-        // }
+        if(password != confirmPassword){
+            alert("Passwords entered do not match");
+            return;
+        }
+        if(!email.includes('@')){
+            alert("Please enter a valid email");
+            return;
+        }
 
-        let ajaxUrl = 'http://localhost:8082/CSCI201Quiz/login';
+        let ajaxUrl = 'http://localhost:8082/CSCI201Quiz/signup';
         console.log(ajaxUrl);
         let sendData = {
             "username": username,
+            "email": email,
             "password": password
          };
         $.ajax({
@@ -151,7 +152,6 @@ $(document).ready(function () {
                 
 
                 // printTime();
-                // updateNavByLoginStatus();
                 window.location.href = "index.html";
                 
 
@@ -160,7 +160,7 @@ $(document).ready(function () {
             error: function (err) {
                 console.log(err);
                 console.log(err.responseJSON);
-                window.alert("Error Logging In: " + err.responseJSON);
+                window.alert("Error Signing up new user: " + err.responseJSON);
                 // window.alert("Unable to get details of selected event.");
             }
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>USC Quiz Login Page</title>
+	<title>USC Quiz signup Page</title>
 
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,8 +18,9 @@
 	<!-- <link rel="stylesheet" type="text/css" href="theextra/bootstrap/css/bootstrap.min.css"> -->
 	<!-- <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"> -->
 	<!-- <link rel="stylesheet" type="text/css" href="theextra/css-hamburgers/hamburgers.min.css"> -->
-	<link rel="stylesheet" type="text/css" href="css/login.css">
+	<link rel="stylesheet" type="text/css" href="css/signup.css">
 	<link rel="stylesheet" type="text/css" href="css/second.css">
+	<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
 
 	<!-- <link rel="stylesheet" type="text/css" href="./css/stylesheet.css">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
@@ -27,7 +28,7 @@
 
 		
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="./js/login.js"></script>
+	<script src="./js/signup.js"></script>
 </head>
 <body>
 	<nav class="navbar">
@@ -49,13 +50,13 @@
 	</nav>
 
 	<div class="overall">
-		<div class="container-login">
-			<div class="wrap-login">
+		<div class="container-signup">
+			<div class="wrap-signup">
 				<div class="pic1 js-tilt" data-tilt>
 					<img src="images/uscquiz.png" alt="IMG">
 				</div>
-				<div class="login-form validate-form">
-					<span class="login-form-title"> Login: </span>
+				<div class="signup-form validate-form">
+					<span class="signup-form-title"> Sign Up: </span>
 					<div class="wrap-input validate-input" data-validate = "Username Required!: name">
 						<input class="input" id="username-input" type="text" name="email" placeholder="Username">
 						<span class="focus-input"></span>
@@ -63,16 +64,14 @@
 							<i class="fa fa-envelope" aria-hidden="true"></i>
 						</span> -->
 					</div>
-					<!-- <div class="wrap-input validate-input" data-validate = "Email Required!: name@usc.edu">
+					<div class="wrap-input validate-input" data-validate = "Email Required!: name@usc.edu">
 						<input class="input" id="email-input" type="text" name="email" placeholder="Email">
 						<span class="focus-input"></span>
-						
-					</div> -->
+						<!-- <span class="symbol-input">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span> -->
+					</div>
 					
-					<!-- <div class="wrap-input validate-input" data-validate = "Need a Password!">
-						<input class="input" id="password-input" type="password" name="pass" placeholder="Password">
-						<span class="focus-input"></span>
-					</div> -->
 					<div class="wrap-input validate-input" data-validate = "Need a Password!">
 						<input class="input" id="password-input" type="password" name="pass" placeholder="Password">
 						<span class="focus-input"></span>
@@ -80,13 +79,20 @@
 							<i class="fa fa-lock" aria-hidden="true"></i>
 						</span> -->
 					</div>
+					<div class="wrap-input validate-input" data-validate = "Need a Password!">
+						<input class="input" id="confirm-password-input" type="password" name="pass" placeholder="Confirm Password">
+						<span class="focus-input"></span>
+						<!-- <span class="symbol-input">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span> -->
+					</div>
 					
 					
-					<!-- <div class="container-login-form-btn">
-						<button class="login-form-btn"> Sign Up</button>
+					<!-- <div class="container-signup-form-btn">
+						<button class="signup-form-btn"> Sign Up</button>
 					</div> -->
-					<div class="container-login-form-btn">
-						<button class="login-form-btn">Login</button>
+					<div class="container-signup-form-btn">
+						<button class="signup-form-btn"> Sign Up</button>
 					</div>
 
 					<!-- <div class="text-center p-t-12">
@@ -95,8 +101,8 @@
 					</div> -->
 
 					<div class="text-center p-t-10">
-						<a class="txt2" href="signup.html">
-							Sign Up
+						<a class="txt2" href="login.html">
+							Login
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>
 					</div>
@@ -115,7 +121,7 @@
 			scale: 1.1
 		})
 	</script>
-	<script src="js/login.js"></script> -->
+	<script src="js/signup.js"></script> -->
 
 </body>
 </html>

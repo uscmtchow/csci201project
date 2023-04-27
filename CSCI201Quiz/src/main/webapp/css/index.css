@@ -1,0 +1,291 @@
+* {
+	margin: 0px; 
+	padding: 0px; 
+	box-sizing: border-box;
+}
+
+body, html {
+	height: 100%;
+	font-family: Trevuchet MS, sans-serif;
+}
+
+/* ------------------ Navigation Bar ------------------ */
+* {
+	box-sizing: border-box;
+}
+
+/* body {
+	margin: 0;
+	height: 100%;
+} */
+
+.navbar-logo {
+  padding-left: 10px;
+	text-shadow: 2px 2px 4px #000000;
+	color: white;
+	text-align: left;
+	align-items: flex-start;
+	flex: 30%;
+}
+
+.navbar {
+  margin: 0px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	/* justify-content: space-between; */
+	background-color: #990000;
+	/* background-image: linear-gradient(to right, #9E768F, #9FA4C4); */
+	color: #FFC72C;
+	height: 65px;
+	/* padding: 1em; */
+	font-weight: bolder;
+	font-size: 25px;
+}
+
+.navbar-menu li:hover {
+	color: white;
+	cursor: pointer;
+}
+
+.navbar-menu {
+	display: flex;
+	flex-direction: row;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+
+	justify-content: flex-end;
+	flex: 30%;
+}
+
+.navbar-menu>li {
+	margin: 0 1rem;
+	overflow: hidden;
+}
+
+.navbar-menu li a {
+	text-decoration: none;
+	color: white;
+	font-size: 18px;
+	font-weight: normal;
+}
+
+.navbar-menu>li a:hover {
+
+	color: #FFC72C;
+
+}
+
+/*---------------------------------------------*/
+.container {
+	display: flex;
+}
+.inner-container {
+	padding-left: 10px;
+	padding-right: 10px;
+	width: 100%;
+	/*for testing purpose*/
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	height: 100%;
+	box-sizing: border-box;
+	/* NEW */
+}
+.row {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 100%;
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+.column {
+	display: flex;
+	flex-direction: column;
+	flex-basis: 100%;
+	flex: 1;
+}
+
+.container {
+	display: flex;
+}
+
+.inner-container {
+	padding-left: 10px;
+	padding-right: 10px;
+	width: 100%;
+	/*for testing purpose*/
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	height: 100%;
+	box-sizing: border-box;
+	/* NEW */
+}
+
+.blue-column {
+	background-color: blue;
+	height: 100px;
+}
+
+.green-column {
+	background-color: green;
+	height: 100px;
+}
+
+button {
+	margin-top: 20px;
+}
+
+span {
+	color: #000000;
+}
+
+input {
+	color: #000000;
+}
+
+div.search-box {
+  margin-top: 10px;
+	width: clamp(20px, 300vw, 400px);
+	margin: auto;
+	background-color: #626363;
+	border-radius: 5px;
+	padding: 20px;
+	/* text-align: center; */
+	/* justify-content: center; */
+}
+
+.search-box-header>h1 {
+	color: #FFFFFF;
+}
+
+div.search-box-header {
+	border-bottom: solid black;
+	text-align: center;
+	align-items: center;
+}
+
+div.search-box-filter {
+	display: flex;
+	flex-direction: column;
+	margin-top: 10px;
+	/* border-bottom: solid black; */
+	/* text-align: center; */
+}
+
+span.search-box-filter-header {
+	color: #05DAAD;
+}
+
+span.red-required-field-star {
+	color: #FA0000;
+}
+
+div.search-button-div {
+	display: block;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	/* align-items: center; */
+	/* align-content: center; */
+	text-align: center;
+}
+
+button.search-button {
+	margin: auto;
+}
+
+div.quiz-table-div {
+	display: none;
+	width: 100%;
+	/* position: fixed; */
+	/* margin-right: 20%; */
+	table-layout: fixed;
+	padding: 20px;
+}
+
+#quiz-table {
+	width: 100%;
+
+}
+
+th {
+	text-align: center;
+	border: 1px solid;
+}
+
+th.image-col {
+	width: 20%;
+}
+
+th.name-col {
+	width: 10%;
+}
+
+#quiz-table>tr {
+
+	line-height: 20px;
+}
+
+#quiz-table tr td {
+	padding: 10px;
+	border: 1px solid;
+}
+
+h1 {
+  margin-top: 50px;
+  margin-left: 10px;
+}
+
+#quiz-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.quiz {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f2f2f2;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  margin: 20px;
+  padding: 20px;
+  width: 300px;
+  height: 300px;
+  text-align: center;
+}
+
+.quiz h2 {
+  margin-top: 0;
+}
+
+.quiz p {
+  margin-top: 10px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  width: 100px;
+  height: 30px;
+  font-size: 16px;
+  font-family: optima;
+  cursor: pointer;
+  background-color: #990000;
+  color: white;
+}
+
+button:hover {
+  background-color: #B00000;
+}
