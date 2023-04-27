@@ -87,7 +87,7 @@ $(document).ready(function () {
 
 
 
-    var saveTableData = [];
+    var saveCategoryData = [];
 
 
     function printTime() {
@@ -169,6 +169,75 @@ $(document).ready(function () {
         }
 
 
+    }
+    function updateCategorySelectBoxOptions() {
+        $.ajax({
+            type: "GET",
+            // headers: {
+            //     'Access-Control-Allow-Origin': '*'
+            //     // 'Content-Type':'application/json'
+            // },
+            dataType: 'json',
+
+            url: ajaxUrl,
+            // contentType: 'application/json',
+            // data: JSON.stringify( sendData ),
+            // crossDomain: true,
+            // processData: false,
+            // beforeSend: function(xhr){xhr.setRequestHeader('Authorization', '[your-api-key]');},
+            // headers: {'Authorization': '[your API key]'},
+            success: function (response) {
+                console.log(response);
+                // console.log(response.responseText);
+
+                // const tableId = "#filenameTable";
+                // var table = document.getElementById(tableId);
+                // $(tableId).find("tr:not(:first)").remove();
+
+                // //For CFT, add extra column for file's Parent Folder Name
+                // if(filterKeysArray[0] == "CFT"){
+                //     $('#parent-file-col').show();
+                // }
+                // else{
+                //     $('#parent-file-col').hide();
+                // }
+                // printTime();
+                saveCategoryData = JSON.parse(response);
+                console.log(saveCategoryData);
+                insertCategoriesToSelectBox();
+                
+
+                // searchEventTable.style.display = "block";
+
+                
+
+                // saveTableData = array;
+
+                // //reinitializing array to store File IDs that match filters
+                // filteredFileIDs = [];
+                // insertFiledataToTable(0, filterKeysArray[0], filterLoadNoFiles, fileSizeFilterOperator, fileSizeFilter);
+
+
+            },
+            error: function (err) {
+
+                window.alert("Please fill in all required fields.");
+            }
+
+        })
+        
+    }
+    function insertCategoriesToSelectBox(){
+        let selectBox = document.getElementsByClassName("category-select")[0];
+
+        for(category of saveCategoryData){
+            
+        }
+        var option = document.createElement("option");
+        option.text = "Text";
+        option.value = "myvalue";
+        var select = document.getElementById("id-to-my-select-box");
+        select.appendChild(option);
     }
     // // Add smooth scrolling to all links in navbar + footer link
     // $(".navbar a, footer a[href='#WiDeS'], .carousel .text a, .dropbtn").on('click', function(event) {
@@ -338,7 +407,7 @@ $(document).ready(function () {
                 }
                 displayQuizdata();
                 insertQuizdataToTable();
-                
+
                 // saveTableData = array;
 
                 // //reinitializing array to store File IDs that match filters
@@ -373,7 +442,7 @@ $(document).ready(function () {
 
             let quizInfoCol = document.createElement("div");
             $(quizInfoCol).addClass("column quiz-info");
-            
+
             let quizNameDiv = document.createElement("div");
             $(quizNameDiv).addClass("row quiz-name");
             quizNameDiv.innerHTML = saveTableData[i]["name"];
@@ -392,7 +461,7 @@ $(document).ready(function () {
 
             displayQuizRow.appendChild(quizImageCol);
             displayQuizRow.appendChild(quizInfoCol);
-            
+
             displayQuizDiv.appendChild(displayQuizRow);
         }
     }

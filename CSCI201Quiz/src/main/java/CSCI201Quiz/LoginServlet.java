@@ -40,7 +40,9 @@ public class LoginServlet extends HttpServlet {
 			
 			if(loginUser != null) {
 				Cookie userCookie = new Cookie("username", loginUser.getUserName());
-				userCookie.setHttpOnly(true);
+				
+				
+//				userCookie.setHttpOnly(true);
 				response.setStatus(HttpServletResponse.SC_OK);
 				response.addCookie(userCookie);
 				out.write(gson.toJson("success"));

@@ -14,8 +14,8 @@ import com.google.gson.Gson;
 /**
  * Servlet implementation class RegistrationServlet
  */
-@WebServlet("/register")
-public class RegisterServlet extends HttpServlet {
+@WebServlet("/signup")
+public class SignupServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
@@ -23,7 +23,7 @@ public class RegisterServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 
 		response.addHeader("Access-Control-Allow-Origin", "*");
-		System.out.println("register servlet");
+//		System.out.println("register servlet");
 		Gson gson = new Gson();
 		User user = gson.fromJson(request.getReader(), User.class); 
 		

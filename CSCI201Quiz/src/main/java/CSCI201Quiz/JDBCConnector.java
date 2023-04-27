@@ -20,7 +20,7 @@ import java.util.Vector;
 import com.mysql.cj.exceptions.DataReadException;
 
 public class JDBCConnector {
-	static final String DB_URL = "jdbc:mysql://localhost:3306/users";
+	static final String DB_URL = "jdbc:mysql://localhost:3306/trivially_trojan";
 	static final String USER = "root";
 	static final String PASS = "password";
 	static final Map<String, Integer> userMap = new HashMap<String, Integer>();
@@ -184,6 +184,30 @@ public class JDBCConnector {
 			}
 		}
 	}
+	public static List<Quiz> getQuizById(int quiz_id) {
+		String QUERY = "SELECT * FROM Quiz q"
+				+ " WHERE q.quiz_id='" + quiz_id + ";";
+		
+		ResultSet rs = executeToDatabase(QUERY, "GET");
+		if(rs == null) {
+			return null;
+		}
+		else {
+			try {
+				List<Quiz> quizList = new ArrayList<>();
+				while (rs.next()) {
+					Quiz quiz = new Quiz(rs.getString("name"), rs.getString("description"), rs.getString("image_location"), rs.getInt("category_id"));
+					System.out.println(quiz.toString());
+					quizList.add(quiz);
+				}
+				return quizList;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return null;
+			}
+		}
+	}
 	
 	public static int getCategoryIdFromName(String categoryName) {
 		String QUERY = "SELECT * FROM Category c "
@@ -289,6 +313,8 @@ public class JDBCConnector {
 //			String pass= "password";
 			Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
 			Statement stmt = conn.createStatement();
+			
+			System.out.println(QUERY);
 			stmt.executeUpdate(QUERY, Statement.RETURN_GENERATED_KEYS);
 			ResultSet rs = stmt.getGeneratedKeys();
 
@@ -427,8 +453,8 @@ public class JDBCConnector {
 		int id = m.get(username);
 		
 		// make the query getting the record objects for the user
-		String QUERY = "SELECT urq.*, r.* FROM UserQuizRecord urq, Result r"
-				+ " WHERE urq.user_id=" + id + " AND r.id = urq.quiz_result_id;";
+		String QUERY = "SELECT urq.*, r.*, q.* FROM UserQuizRecord urq, Result r, Quiz q"
+				+ " WHERE urq.user_id=" + id + " AND r.id = urq.quiz_result_id AND q.id = urq.quiz_id;";
 		
 		// retrieve the result description from the record's quiz_result_id and then get the result's description
         
@@ -437,7 +463,8 @@ public class JDBCConnector {
 			
 			while (rs.next()) {
 				try {
-					v.add(new Record(rs.getInt("id"), id, rs.getInt("quiz_id"), rs.getString("description"), rs.getString("image_location")));
+					v.add(new Record(id, rs.getInt("quiz_id"), rs.getString("name"), rs.getString("description"), rs.getString("image_location")));
+//					v.add(new Record(rs.getInt("id"), id, rs.getInt("quiz_id"), rs.getString("description"), rs.getString("image_location")));
 					//System.out.println(v.get(0).toString());
 				} catch (SQLException e) {
 					e.printStackTrace();
