@@ -26,20 +26,35 @@ public class QuizServlet extends HttpServlet{
 		
 //		boolean categoryUsed = false;
 		String category = "";
+		int quiz_id;
 		if (request.getParameterMap().containsKey("category")) {
 			category = request.getParameter("category");
 //			categoryUsed = true;
+			List<Quiz> quizList = JDBCConnector.getQuizzesByCategory(category);
+			if(quizList == null || quizList.size() <= 0) {
+				response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+				Util.printJsonMsg("error: Quiz Servlet", pw);
+			}
+			else {
+				response.setStatus(HttpServletResponse.SC_OK);
+				Util.printJsonMsg(gson.toJson(quizList), pw);
+			}
+		}
+		else if (request.getParameterMap().containsKey("quiz_id")) {
+			quiz_id = Integer.parseInt(request.getParameter("quiz_id"));
+//			categoryUsed = true;
+			Quiz quiz = JDBCConnector.getQuizById(quiz_id);
+			if(quiz == null) {
+				response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+				Util.printJsonMsg("error: Quiz Servlet", pw);
+			}
+			else {
+				response.setStatus(HttpServletResponse.SC_OK);
+				Util.printJsonMsg(gson.toJson(quiz), pw);
+			}
 		}
 		
 		
-		List<Quiz> quizList = JDBCConnector.getQuizzesByCategory(category);
-		if(quizList == null || quizList.size() <= 0) {
-			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-			Util.printJsonMsg("error: Quiz Servlet", pw);
-		}
-		else {
-			response.setStatus(HttpServletResponse.SC_OK);
-			Util.printJsonMsg(gson.toJson(quizList), pw);
-		}
+		
 	}
 }

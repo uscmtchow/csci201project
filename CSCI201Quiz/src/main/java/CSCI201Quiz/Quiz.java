@@ -1,8 +1,9 @@
 package CSCI201Quiz;
 
 public class Quiz {
-	private String name;
+	private int id;
 	private String description;
+	private String name;
 	private String image_location;
 	private int category_id;
 	public Quiz(String name, String description, String image_location, int category_id) {
@@ -14,6 +15,15 @@ public class Quiz {
 	}
 	
 	
+	
+	public Quiz(int id, String name, String description, String image_location, int category_id) {
+		this(name, description, image_location, category_id);
+		this.id = id;
+		
+	}
+
+
+
 	public String getName() {
 		return name;
 	}
